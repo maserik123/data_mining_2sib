@@ -29,7 +29,21 @@
                     mimeType: "multipart/form-data",
                     success: function (json) {
                         console.log(json);
-                       
+                       if(json.success == true){
+                           $('#status').html('Berhasil diproses !');
+                       } else{
+                        $('#status').html('Gagal diproses !');
+                       }
+
+                       if(json.label == 1){
+                           $('#hasil').html('Anda diprediksi terpapar Covid-19');
+                       } else if(json.label == 2) {
+                           $('#hasil').html('Anda diprediksi menderita penyakit pneumonia');
+                       } else {
+                        $('#hasil').html('Anda normal/tidak menderita pneumonia/covid-19');
+                       }
+
+
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log('Error: ' + data.error);
